@@ -2,24 +2,22 @@ import { cocktailLists, mockTailLists } from "../../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-
 const Cocktails = () => {
+  useGSAP(() => {
+    const parallaxTimeLine = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#cocktails",
+        start: "top 30%",
+        end: "bottom 80%",
+        scrub: true,
+      },
+    });
 
-    useGSAP(() => {
-        const parallaxTimeLine = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#cocktails",
-                start: "top 30%",
-                end: "bottom 80%",
-                scrub: true,
-            }
+    parallaxTimeLine
+      .from("#c-left-leaf", { y: 100, x: -100 })
+      .from("#c-right-leaf", { y: 100, x: 100 });
+  });
 
-        })
-
-        parallaxTimeLine.from("#c-left-leaf", { y: 100 , y: -100 })
-            .from("#c-right-leaf", { y: 100 , y: 100 });
-    })
-    
   return (
     <section id="cocktails" className="noisy">
       <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id="c-left-leaf" />
@@ -35,7 +33,7 @@ const Cocktails = () => {
         </div>
 
         <ul>
-          {cocktailLists.map(({name, country, detail, price }) => (
+          {cocktailLists.map(({ name, country, detail, price }) => (
             <li key={name}>
               <div className="md:me-28">
                 <h3>{name}</h3>
@@ -53,7 +51,7 @@ const Cocktails = () => {
         </div>
 
         <ul>
-          {mockTailLists.map(({name, country, detail, price }) => (
+          {mockTailLists.map(({ name, country, detail, price }) => (
             <li key={name}>
               <div className="me-28">
                 <h3>{name}</h3>
@@ -66,8 +64,6 @@ const Cocktails = () => {
           ))}
         </ul>
       </div>
-
-      
     </section>
   );
 };
