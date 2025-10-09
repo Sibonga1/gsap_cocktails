@@ -3,7 +3,7 @@ import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 const Hero = () => {
   const videoRef = useRef();
@@ -108,7 +108,7 @@ const Hero = () => {
       <div className="video absolute inset-0">
         <video
           ref={videoRef}
-          src="/videos/input.mp4"
+          src="/videos/output.mp4"
           muted
           playsInline
           preload="auto"
